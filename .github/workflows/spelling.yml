@@ -188,6 +188,7 @@ jobs:
     permissions:
       actions: read
       contents: write
+      security-events: write
     if: (success() || failure()) && needs.spelling.outputs.followup && github.event_name == 'push'
     steps:
       - name: comment
@@ -196,6 +197,7 @@ jobs:
           checkout: true
           spell_check_this: check-spelling/spell-check-this@prerelease
           task: ${{ needs.spelling.outputs.followup }}
+          use_sarif: 1
 
   comment-pr:
     name: Report (PR)
