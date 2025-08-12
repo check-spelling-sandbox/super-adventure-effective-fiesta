@@ -206,6 +206,7 @@ jobs:
       actions: read
       contents: read
       pull-requests: write
+      security-events: write
     if: (success() || failure()) && needs.spelling.outputs.followup && contains(github.event_name, 'pull_request')
     steps:
       - name: comment
